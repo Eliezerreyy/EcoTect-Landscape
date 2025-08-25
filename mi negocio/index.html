@@ -25,7 +25,6 @@
       background: #fff;
     }
 
-    /* Barra superior */
     header{background:var(--green);color:#fff;}
     .topbar{
       max-width:var(--max);
@@ -69,7 +68,6 @@
     }
     .btn:hover{ background:var(--green-700); color:#fff; }
 
-    /* Contenido */
     .section{
       max-width:var(--max);
       margin:0 auto;
@@ -78,7 +76,6 @@
     .section h2{ margin:0 0 10px }
     .section p.lead{ margin:0 0 22px; color:#444 }
 
-    /* Servicios */
     .grid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -94,7 +91,6 @@
     .card p{ margin:0 }
     .card img{ width:100%; border-radius:8px; margin-bottom:10px; }
 
-    /* Contacto y pie */
     .contact{
       background:#f9fbf9;
       border:1px solid #e7f0e7;
@@ -112,18 +108,16 @@
       margin-top:26px;
     }
 
-    /* Selector de idioma */
     .lang-selector{ text-align:right; padding:10px 18px; max-width:var(--max); margin:0 auto; }
-    .lang-selector button{ padding:6px 12px; margin-left:6px; cursor:pointer; }
+    .lang-selector button{ padding:6px 12px; margin-left:6px; cursor:pointer; border-radius:6px; border:none; font-weight:bold; }
+    .lang-selector button[aria-pressed="true"]{ background:var(--green); color:#fff; }
 
-    /* Responsive */
     @media (max-width:640px){
       nav{ font-size:15px }
       nav a{ margin-left:12px }
       .hero-inner{ padding:40px 12px 50px; }
     }
 
-    /* Botón de llamada */
     .call-btn {
       position: fixed;
       bottom: 20px;
@@ -138,7 +132,6 @@
       z-index:999;
     }
     .call-btn:hover { background: #1f4d33; }
-
   </style>
 </head>
 <body>
@@ -146,36 +139,33 @@
 
   <!-- Selector de idioma -->
   <div class="lang-selector">
-    <button onclick="setLang('es')">ES</button>
-    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('es')" id="btn-es" aria-pressed="true" aria-label="Mostrar español">ES</button>
+    <button onclick="setLang('en')" id="btn-en" aria-pressed="false" aria-label="Show English">EN</button>
   </div>
 
-  <!-- Contenedor Español -->
-  <div id="es" class="lang">
-    <!-- Barra superior -->
+  <!-- Español -->
+  <div id="es" class="lang" lang="es">
     <header>
       <div class="topbar">
         <div class="logo">
           <img src="images/logo.png" alt="Logo de EcoTect Landscape">
         </div>
-        <nav>
-          <a href="#servicios">Servicios</a>
-          <a href="#contacto">Contacto</a>
+        <nav aria-label="Menú principal">
+          <a href="#servicios-es">Servicios</a>
+          <a href="#contacto-es">Contacto</a>
         </nav>
       </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-inner">
         <h1>Cuidamos tu jardín como si fuera el nuestro 🌱</h1>
         <p>Mantenimiento, poda, fumigación, mulch y sprinklers. Puntuales, detallistas y a buen precio.</p>
-        <a class="btn" href="#contacto">Pide tu cotización</a>
+        <a class="btn" href="#contacto-es">Pide tu cotización</a>
       </div>
     </section>
 
-    <!-- Servicios -->
-    <section id="servicios" class="section">
+    <section id="servicios-es" class="section">
       <h2>Servicios</h2>
       <p class="lead">Ofrecemos paquetes flexibles: por visita, semanal o mensual.</p>
       <div class="grid">
@@ -207,8 +197,7 @@
       </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="section">
+    <section id="contacto-es" class="section">
       <h2>Contacto</h2>
       <div class="contact">
         <p>📍 Área: Miami, FL </p>
@@ -220,16 +209,16 @@
     </section>
   </div>
 
-  <!-- Contenedor Inglés -->
-  <div id="en" class="lang" style="display:none;">
+  <!-- Inglés -->
+  <div id="en" class="lang" lang="en" style="display:none;">
     <header>
       <div class="topbar">
         <div class="logo">
           <img src="images/logo.png" alt="EcoTect Landscape Logo">
         </div>
-        <nav>
-          <a href="#servicios">Services</a>
-          <a href="#contacto">Contact</a>
+        <nav aria-label="Main menu">
+          <a href="#servicios-en">Services</a>
+          <a href="#contacto-en">Contact</a>
         </nav>
       </div>
     </header>
@@ -238,11 +227,11 @@
       <div class="hero-inner">
         <h1>We take care of your garden as if it were our own 🌱</h1>
         <p>Maintenance, pruning, pest control, mulch, and sprinklers. Punctual, detail-oriented, and affordable.</p>
-        <a class="btn" href="#contacto">Get a Quote</a>
+        <a class="btn" href="#contacto-en">Get a Quote</a>
       </div>
     </section>
 
-    <section id="servicios" class="section">
+    <section id="servicios-en" class="section">
       <h2>Services</h2>
       <p class="lead">Flexible packages: per visit, weekly, or monthly.</p>
       <div class="grid">
@@ -274,7 +263,7 @@
       </div>
     </section>
 
-    <section id="contacto" class="section">
+    <section id="contacto-en" class="section">
       <h2>Contact</h2>
       <div class="contact">
         <p>📍 Area: Miami, FL </p>
@@ -293,6 +282,7 @@
   <!-- Tawk.to Chat -->
   <div id="tawkto-container" style="z-index:10000;"></div>
   <script type="text/javascript">
+    // Tawk.to chat
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -303,14 +293,14 @@
       s0.parentNode.insertBefore(s1,s0);
     })();
 
-    // Script selector de idioma
+    // Selector de idioma con resaltado de botón activo y aria-pressed
     function setLang(lang){
       document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
       document.getElementById(lang).style.display = 'block';
+      // Actualiza el estado de los botones
+      document.getElementById('btn-es').setAttribute('aria-pressed', lang==='es');
+      document.getElementById('btn-en').setAttribute('aria-pressed', lang==='en');
     }
   </script>
 </body>
 </html>
-
-
-
